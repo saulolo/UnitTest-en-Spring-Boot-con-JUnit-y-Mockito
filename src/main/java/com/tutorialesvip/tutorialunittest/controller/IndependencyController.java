@@ -4,8 +4,6 @@ import com.tutorialesvip.tutorialunittest.models.Country;
 import com.tutorialesvip.tutorialunittest.models.CountryResponse;
 import com.tutorialesvip.tutorialunittest.repositories.CountryRepository;
 import com.tutorialesvip.tutorialunittest.util.DiferenciaEntreFechas;
-import lombok.NoArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,7 +15,6 @@ import java.util.Optional;
 /**
  * Author: Saulolo
  */
-
 
 
 @RestController()
@@ -38,8 +35,10 @@ public class IndependencyController {
         this.diferenciaEntreFechas = diferenciaEntreFechas;
     }
 
-    @GetMapping(path = "/country/{countryId}")
-    public ResponseEntity<CountryResponse> getCountryDetails(@PathVariable("countryId") String countryId) {
+    //ResponseEntity: Proporciona una forma flexible y conveniente de manejar la respuesta, permitiendo establecer el
+    // código de estado HTTP, los encabezados y el cuerpo de la respuesta.
+    @GetMapping("/country/{countryId}")
+    public ResponseEntity<CountryResponse> getCountryDetails(@PathVariable String countryId) {
         country = Optional.of(new Country());
         countryResponse = new CountryResponse();
 
